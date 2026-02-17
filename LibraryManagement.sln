@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.Tests", "LibraryManagement.Tests\LibraryManagement.Tests.csproj", "{8FC977B4-1413-4D63-B5B3-091D85C63444}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.API", "LibraryManagement.API\LibraryManagement.API.csproj", "{D9C62737-E40B-413B-8BBD-9E4CE15CBD05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagement.API", "LibraryManagement.API\LibraryManagement.API.csproj", "{A24BB8BF-AB0F-4616-A0AB-324B71EBF7E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{8FC977B4-1413-4D63-B5B3-091D85C63444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FC977B4-1413-4D63-B5B3-091D85C63444}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FC977B4-1413-4D63-B5B3-091D85C63444}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9C62737-E40B-413B-8BBD-9E4CE15CBD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9C62737-E40B-413B-8BBD-9E4CE15CBD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9C62737-E40B-413B-8BBD-9E4CE15CBD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9C62737-E40B-413B-8BBD-9E4CE15CBD05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24BB8BF-AB0F-4616-A0AB-324B71EBF7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24BB8BF-AB0F-4616-A0AB-324B71EBF7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24BB8BF-AB0F-4616-A0AB-324B71EBF7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24BB8BF-AB0F-4616-A0AB-324B71EBF7E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
