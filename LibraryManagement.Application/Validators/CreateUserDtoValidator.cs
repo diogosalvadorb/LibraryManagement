@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LibraryManagement.Application.DTOs;
+using LibraryManagement.Domain.Enums;
 using System.Text.RegularExpressions;
 
 namespace LibraryManagement.Application.Validators
@@ -24,7 +25,8 @@ namespace LibraryManagement.Application.Validators
                 .Must(ValidPassword).WithMessage("The password must contain at least 8 characters: one number, one hidden letter, one lowercase letter, and one special character.");
 
             RuleFor(x => x.Role)
-                .IsInEnum().WithMessage("The provided User Role is invalid.");
+                .Must(role => Enum.IsDefined(typeof(UserRole), role))
+                .WithMessage("The provided User Role is invalid.");
         }
 
         public bool ValidPassword(string password)
