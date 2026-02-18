@@ -1,5 +1,8 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using LibraryManagement.Application.Interfaces;
 using LibraryManagement.Application.Services;
+using LibraryManagement.Application.Validators;
 using LibraryManagement.Domain.Interfaces;
 using LibraryManagement.Infrastructure;
 using LibraryManagement.Infrastructure.Persistence.Repository;
@@ -15,6 +18,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddFluentValidationAutoValidation().AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
 
 builder.Services.AddOpenApi();
 
