@@ -16,7 +16,7 @@ namespace LibraryManagement.Infrastructure.Persistence.Configuration
 
             builder.Property(u => u.Email)
                .IsRequired()
-               .HasMaxLength(100);
+               .HasMaxLength(320);
 
             builder.Property(u => u.Password)
                .IsRequired()
