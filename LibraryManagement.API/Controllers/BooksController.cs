@@ -36,6 +36,7 @@ namespace LibraryManagement.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<BookDto>> Create([FromBody] CreateBookDto request)
         {
             try
@@ -51,6 +52,7 @@ namespace LibraryManagement.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<BookDto>> Update(int id, [FromBody] UpdateBookDto request)
         {
             try
@@ -66,6 +68,7 @@ namespace LibraryManagement.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             try
