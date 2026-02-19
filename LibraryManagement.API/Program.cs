@@ -1,3 +1,4 @@
+using Azure.Core.Pipeline;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using LibraryManagement.Application.Interfaces;
@@ -21,6 +22,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddFluentValidationAutoValidation().AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
