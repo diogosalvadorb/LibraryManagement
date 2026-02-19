@@ -16,9 +16,15 @@ namespace LibraryManagement.Infrastructure.Persistence.Configuration
             builder.Property(l => l.ExpectedReturnDate)
                 .IsRequired();
 
+            builder.Property(l => l.ReturnDate)
+                .IsRequired(false);
+
             builder.Property(l => l.LoanStatus)
                 .IsRequired()
                 .HasConversion<int>();
+
+            builder.Property(l => l.Active)
+                .IsRequired();
 
             builder.HasOne(l => l.User)
                 .WithMany()
