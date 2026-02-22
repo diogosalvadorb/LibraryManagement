@@ -1,6 +1,4 @@
-﻿
-
-namespace LibraryManagement.Domain.Entities
+﻿namespace LibraryManagement.Domain.Entities
 {
     public class Book
     {
