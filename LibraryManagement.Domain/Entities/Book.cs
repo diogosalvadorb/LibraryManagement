@@ -35,5 +35,15 @@
             Description = description;
             PublicationYear = publicationYear;
         }
+
+        public void MarkAsAvailable()
+        {
+            IsAvailable = true;
+        }
+
+        public void MarkAsUnavailable()
+        {
+           IsAvailable = false;
+        }
     }
 }
