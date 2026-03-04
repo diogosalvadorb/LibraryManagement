@@ -16,9 +16,6 @@ namespace LibraryManagement.Infrastructure.Persistence.Configuration
             builder.Property(l => l.ExpectedReturnDate)
                 .IsRequired();
 
-            builder.Property(l => l.ReturnDate)
-                .IsRequired();
-
             builder.Property(l => l.LoanStatus)
                 .IsRequired()
                 .HasConversion<int>();
