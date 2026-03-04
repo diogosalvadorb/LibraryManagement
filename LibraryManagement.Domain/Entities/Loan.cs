@@ -24,5 +24,37 @@ namespace LibraryManagement.Domain.Entities
         public DateTime? ReturnDate { get; private set; }
         public LoanStatus LoanStatus { get; private set; }
         public bool Active { get; private set; }
+
+        public void Return()
+        {
+            ReturnDate = DateTime.UtcNow;
+            LoanStatus = LoanStatus.Returned;
+        }
+
+        public void Deactivate()
+        {
+            Active = false;
+        }
+
+        private record LoanRule(int MaxLoans, int ReturnDays);
+
+        private static readonly Dictionary<UserRole, LoanRule> _rules = new()
+        {
+            { UserRole.Common,  new LoanRule(MaxLoans: 1, ReturnDays: 4) },
+            { UserRole.Premium, new LoanRule(MaxLoans: 1, ReturnDays: 8) },
+            { UserRole.Vip,     new LoanRule(MaxLoans: 3, ReturnDays: 8) },
+            { UserRole.Admin,   new LoanRule(MaxLoans: 3, ReturnDays: 8) },
+        };
+
+        public static int GetMaxLoans(UserRole role) => _rules[role].MaxLoans;
+        public static int GetReturnDays(UserRole role) => _rules[role].ReturnDays;
+        public static DateTime CalculateExpectedReturnDate(UserRole role) =>
+            DateTime.UtcNow.AddDays(GetReturnDays(role));
+
+        public static Loan Create(int userId, int bookId, UserRole userRole)
+        {
+            var expectedReturnDate = CalculateExpectedReturnDate(userRole);
+            return new Loan(userId, bookId, expectedReturnDate);
+        }
     }
 }
