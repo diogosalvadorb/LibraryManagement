@@ -31,6 +31,11 @@ namespace LibraryManagement.Domain.Entities
             LoanStatus = LoanStatus.Returned;
         }
 
+        public void MarkAsOverdue()
+        {
+            LoanStatus = LoanStatus.Overdue;
+        }
+
         public void Deactivate()
         {
             Active = false;

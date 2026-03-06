@@ -1,7 +1,9 @@
 using Azure.Core.Pipeline;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Hangfire;
 using LibraryManagement.Application.Interfaces;
+using LibraryManagement.Application.Jobs;
 using LibraryManagement.Application.Services;
 using LibraryManagement.Application.Validators;
 using LibraryManagement.Domain.Interfaces;
@@ -20,6 +22,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataBaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+
+builder.Services.AddHangfire(config => config
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UseSqlServerStorage(builder.Configuration.GetConnectionString("Connection")));
+
+builder.Services.AddHangfireServer();
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -64,6 +74,18 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseHangfireDashboard("/hangfire");
+
+RecurringJob.AddOrUpdate<OverdueLoanJob>(
+    recurringJobId: "check-overdue-loans",
+    methodCall: job => job.CheckAndMarkOverdueLoansAsync(),
+    cronExpression: "*/5 * * * *",
+    options: new RecurringJobOptions
+    {
+        TimeZone = TimeZoneInfo.Utc
+    });
+
 app.MapControllers();
 
 app.Run();
